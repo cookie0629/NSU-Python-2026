@@ -1,9 +1,6 @@
-def collatz_conjecture() -> None:
-    try:
-        n = int(input("输入一个数字: "))
-    except ValueError:
-        print("请输入有效的")
-        return
+def collatz_conjecture(n: int) -> list:
+    if n <= 0:
+        raise ValueError("The Collatz conjecture only applies to positive integers greater than 0.")
 
     sequence = []
     while n != 1:
@@ -14,8 +11,21 @@ def collatz_conjecture() -> None:
             n = 3 * n + 1
 
     sequence.append("1")
-    print(" -> ".join(sequence))
+    return sequence
+
+
+def main():
+    user_input = input("Enter a number:")
+    try:
+        n = int(user_input)
+
+        result_sequence = collatz_conjecture(n)
+
+        print(" -> ".join(result_sequence))
+
+    except ValueError as e:
+        print(f"Invalid input: {e}")
 
 
 if __name__ == "__main__":
-    collatz_conjecture()
+    main()
