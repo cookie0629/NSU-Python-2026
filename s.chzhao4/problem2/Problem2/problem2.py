@@ -1,5 +1,5 @@
 def invert_dictionary(lines: list) -> list:
-    latin_to_english = {}
+    latin_to_english: dict[str, list[str]] = {}
 
     for line in lines:
         if '-' not in line:
